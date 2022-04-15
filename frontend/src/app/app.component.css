@@ -1,0 +1,36 @@
+.element::-webkit-scrollbar { width: 0 !important }
+
+#foorm
+{
+    position:absolute;
+    right: 5px;
+}
+
+
+
+span
+{
+    padding-top: 7.5px;
+    color: white;
+    font-family: 'Abel', sans-serif;
+    font-family: 'Baloo Bhai 2', cursive;
+    /* font-family: 'Balsamiq Sans', cursive;
+    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Oswald', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif; */
+}
+#left
+{
+    padding-left: 450px;
+}
+a{
+    font-family: 'Abel', sans-serif;
+    font-family: 'Baloo Bhai 2', cursive;
+    font-family: 'Balsamiq Sans', cursive;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Oswald', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
+}

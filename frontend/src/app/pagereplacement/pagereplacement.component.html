@@ -1,0 +1,396 @@
+<div class="continer-fluid">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="sidebar-container">
+                <div class="sidebar-logo">
+                    Page Replacement
+                </div>
+                <ul class="sidebar-navigation static">
+                    <li>
+                        <a href="#fifo" (click)="fifo($event)">
+                            <i class="fa fa-home" aria-hidden="true"></i> FIFO
+                        </a>
+                    </li>
+                    <li (click)="LRU($event)">
+                        <a href="#npsjf">
+                            <i class="fa fa-tachometer" aria-hidden="true "></i> LRU
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="content-container " id="ok">
+
+                <div class="container-fluid">
+
+                    <!-- Main component for a primary marketing message or call to action -->
+                    <div class="jumbotronn">
+                        <h1 class="center" id="saa">PAGE REPLACEMENT ALGORITHMS</h1>
+                        <div class="my-3">
+                            <p>
+                                In an operating system that uses paging for memory management, a page replacement
+                                algorithm is needed to decide which page needs to be replaced when new page comes in.
+                            </p>
+                            <p> Page Fault – A page fault happens when a running program accesses a memory page that is
+                                mapped into the virtual address space, but not loaded in physical memory. </p>
+                            <p>Frame Size – Specifies size of each chunk by which main memory is divided. </p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- First Come First Serve -->
+                <div [hidden]=showfifo id="fifo">
+
+                    <div id="yes">
+                        <h1 class="center" id="sa">FIRST IN FIRST SERVE</h1>
+
+                        <!-- Main component for a primary marketing message or call to action -->
+                        <div class="jumbotronn">
+                            <p id="g1">This is the simplest page replacement algorithm. In this algorithm, operating
+                                system keeps track of all pages in the memory in a queue, oldest page is in the front of
+                                the queue. When a page needs to be replaced page in the front of the queue is selected
+                                for removal.</p>
+
+                           
+                                <table id="g1" class="table table-bordered jumbotronn">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">Advantages</th>
+                                            <th scope="col">Disadvantages</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Simple & Easy</td>
+                                            <td>The process effectiveness is low</td>
+                                        </tr>
+                                        <tr>
+                                            <td>No manipulation of income is possible.</td>
+                                            <td> page fault should decrease, but here the page faults are increasing</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Less Complexity and easy to implement</td>
+                                            <td>Every frame needs to be taken account off.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                        <div>
+                        </div>
+
+                        <div id="boxx">
+                            <h3 class="centerr">Visualization</h3>
+                            <div class="my-3">
+                                <form (ngSubmit)="submitfifo()">
+                                    <div class="mb-3">
+                                        <label for="rstring" class="form-label">Please Enter the Refrence String
+                                        </label>
+                                        <input type="text" class="form-control" #rstring
+                                            (keyup)="getrstring(rstring.value)" id="rstring"
+                                            placeholder="Refrence String">
+                                    </div>
+                                    <div class="mb3">
+                                        <label for="cars">Please Chose Frame Size</label>
+                                        <select class="mx-3" name="cars" id="cars" (change)="onItemChange($event)">
+                                            <option value="1" selected>1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </form>
+                            </div>
+
+                            <div [hidden]=table class="my-3">
+                                <h3>Table</h3>
+                                <div class="my-3">
+                                    <div class="first" [hidden]=first>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Frame 1</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let todo of a1">
+                                                    <th scope="row">{{todo.f1}}</th>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                    <div class="second" [hidden]=second>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Frame 1</th>
+                                                    <th scope="col">Frame 2</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let todo of a2">
+                                                    <td scope="row">{{todo.f1}}</td>
+                                                    <td scope="row">{{todo.f2}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="third" [hidden]=third>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Frame 1</th>
+                                                    <th scope="col">Frame 2</th>
+                                                    <th scope="col">Frame 3</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let todo of a3">
+                                                    <th scope="row">{{todo.f1}}</th>
+                                                    <th scope="row">{{todo.f2}}</th>
+                                                    <th scope="row">{{todo.f3}}</th>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="four" [hidden]=four>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Frame 1</th>
+                                                    <th scope="col">Frame 2</th>
+                                                    <th scope="col">Frame 3</th>
+                                                    <th scope="col">Frame 4</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let todo of a4">
+                                                    <th scope="row">{{todo.f1}}</th>
+                                                    <th scope="row">{{todo.f2}}</th>
+                                                    <th scope="row">{{todo.f3}}</th>
+                                                    <th scope="row">{{todo.f4}}</th>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="five" [hidden]=five>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Frame 1</th>
+                                                    <th scope="col">Frame 2</th>
+                                                    <th scope="col">Frame 3</th>
+                                                    <th scope="col">Frame 4</th>
+                                                    <th scope="col">Frame 5</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let todo of a5">
+                                                    <th scope="row">{{todo.f1}}</th>
+                                                    <th scope="row">{{todo.f2}}</th>
+                                                    <th scope="row">{{todo.f3}}</th>
+                                                    <th scope="row">{{todo.f4}}</th>
+                                                    <th scope="row">{{todo.f5}}</th>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <span>
+                                        <span><b>Total Page Fault -> {{totalpagefault}}</b></span>
+                                        <span id="lefft"><b>Total Page Hits -> {{totalhits}}</b></span>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div [hidden]="showlru">
+                    <div id="yes">
+                        <h1 class="center" id="sa">LEAST RECENTLY USED</h1>
+
+                        <!-- Main component for a primary marketing message or call to action -->
+                        <div class="jumbotronn">
+                            <p id="g1">In operating systems that use paging for memory management, page replacement
+                                algorithm are needed to decide which page needed to be replaced when new page comes in.
+                                Whenever a new page is referred and not present in memory, page fault occurs and
+                                Operating System replaces one of the existing pages with newly needed page. Different
+                                page replacement algorithms suggest different ways to decide which page to replace. The
+                                target for all algorithms is to reduce number of page faults.
+                                In Least Recently Used (LRU) algorithm is a Greedy algorithm where the page to be
+                                replaced is least recently used. The idea is based on locality of reference, the least
+                                recently used page is not likely .</p>
+
+                            <table id="g1" class="table table-bordered jumbotronn">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Advantages</th>
+                                        <th scope="col">Disadvantages</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>It is open for full analysis.</td>
+                                        <td>TIt requires additional Data Structure to be implemented.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>In this, we replace the page which is least recently used, thus free from
+                                            Belady’s Anomaly.</td>
+                                        <td> page fault should decrease, but here the page faults are increasing</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Easy to choose page which has faulted and hasn’t been used for a long time</td>
+                                        <td>Hardware assistance is high.
+                                            .
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>
+                        </div>
+
+                        <div id="boxx">
+                            <h3 class="centerr">Visualization</h3>
+                            <div class="my-3">
+                                <form (ngSubmit)="submitfifoo()">
+                                    <div class="mb-3">
+                                        <label for="rstringg" class="form-label">Please Enter the Refrence String
+                                        </label>
+                                        <input type="text" class="form-control" #rstringg
+                                            (keyup)="getrstring(rstringg.value)" id="rstringg"
+                                            placeholder="Refrence String">
+                                    </div>
+                                    <div class="mb3">
+                                        <label for="cars">Please Chose Frame Size</label>
+                                        <select class="mx-3" name="cars" id="cars" (change)="onItemChangee($event)">
+                                            <option value="1" selected>1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </form>
+                            </div>
+
+                            <div [hidden]=table class="my-3">
+                                <h3>Table</h3>
+                                <div class="my-3">
+                                    <div class="first" [hidden]=first>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Frame 1</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let todo of a1">
+                                                    <th scope="row">{{todo.f1}}</th>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                    <div class="second" [hidden]=second>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Frame 1</th>
+                                                    <th scope="col">Frame 2</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let todo of a2">
+                                                    <td scope="row">{{todo.f1}}</td>
+                                                    <td scope="row">{{todo.f2}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="third" [hidden]=third>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Frame 1</th>
+                                                    <th scope="col">Frame 2</th>
+                                                    <th scope="col">Frame 3</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let todo of a3">
+                                                    <th scope="row">{{todo.f1}}</th>
+                                                    <th scope="row">{{todo.f2}}</th>
+                                                    <th scope="row">{{todo.f3}}</th>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="four" [hidden]=four>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Frame 1</th>
+                                                    <th scope="col">Frame 2</th>
+                                                    <th scope="col">Frame 3</th>
+                                                    <th scope="col">Frame 4</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let todo of a4">
+                                                    <th scope="row">{{todo.f1}}</th>
+                                                    <th scope="row">{{todo.f2}}</th>
+                                                    <th scope="row">{{todo.f3}}</th>
+                                                    <th scope="row">{{todo.f4}}</th>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="five" [hidden]=five>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Frame 1</th>
+                                                    <th scope="col">Frame 2</th>
+                                                    <th scope="col">Frame 3</th>
+                                                    <th scope="col">Frame 4</th>
+                                                    <th scope="col">Frame 5</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let todo of a5">
+                                                    <th scope="row">{{todo.f1}}</th>
+                                                    <th scope="row">{{todo.f2}}</th>
+                                                    <th scope="row">{{todo.f3}}</th>
+                                                    <th scope="row">{{todo.f4}}</th>
+                                                    <th scope="row">{{todo.f5}}</th>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <span>
+                                        <span><b>Total Page Fault -> {{totalpagefault}}</b></span>
+                                        <span id="lefft"><b>Total Page Hits -> {{totalhits}}</b></span>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+            </div>
+            
+        </div>
+
+        

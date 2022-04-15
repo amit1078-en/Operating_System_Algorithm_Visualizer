@@ -1,0 +1,32 @@
+
+  <nav class="navbar navbar-expand-lg navbar-dark   bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse center" id="navbarNav">
+      <span id="resp">
+        Operating System Algorithm Visualizer
+      </span>
+        <ul class="navbar-nav">
+        
+            <li class="nav-item" id="left">
+              <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Home</a>
+          </li>
+          <li class="nav-items" id="here">
+            <a class="nav-link" [routerLink]="['/SchedulingAlgorithm']" routerLinkActive="active" >Scheduling Algorithms</a>
+          </li>
+          <li class="nav-items" id="here">
+            <a class="nav-link"  [routerLink]="['/PageReplacementAlgorithm']" routerLinkActive="active">Page Replacement Algorithms</a>
+          </li>
+          <li id="here">
+              <a class="nav-link" [routerLink]="['/Aboutus']"  routerLinkActive="active" >About Us</a>
+          </li >
+          <li class="nav-item" id="here">
+              <a class="nav-link" [routerLink]="['/user']" routerLinkActive="active">Settings</a>
+          </li>
+        </ul>
+
+    </div>
+  </nav>
+  <router-outlet></router-outlet>

@@ -1,0 +1,948 @@
+<div class="continer-fluid">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="sidebar-container">
+                <div class="sidebar-logo">
+                    Scheduling
+                </div>
+                <ul class="sidebar-navigation static">
+                    <li class="header">Non Preemptive</li>
+                    <li>
+                        <a href="#fcfs" (click)="showfcfs($event)">
+                            <i class="fa fa-home" aria-hidden="true"></i> FCFS
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#npsjf" (click)="shownpsjf($event)">
+                            <i class="fa fa-tachometer" aria-hidden="true "></i> SJF
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#npp" (click)="shownpp($event)">
+                            <i class="fa fa-users" aria-hidden="true"></i> PRIORITY
+                        </a>
+                    </li>
+                    <li class="header">Preemptive</li>
+                    <li>
+                        <a href="http://127.0.0.1:4200/SchedulingAlgorithm#Preemptive-SJF" (click)="showpsjf($event)">
+                            <i class="fa fa-cog" aria-hidden="true"></i>SJF
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://127.0.0.1:4200/SchedulingAlgorithm#Preemptive-Round-Robin"
+                            (click)="showrr($event)">
+                            <i class="fa fa-cog" aria-hidden="true"></i>ROUND ROBIN
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://127.0.0.1:4200/SchedulingAlgorithm#Preemptive-Priority" (click)="showp($event)">
+                            <i class="fa fa-cog" aria-hidden="true"></i>PRIORITY
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="content-container " id="ok">
+
+                <div class="container-fluid">
+
+                    <!-- Main component for a primary marketing message or call to action -->
+                    <div class="jumbotronn">
+                        <h1 class="center" id="saa">SCHEDULING ALGORITHMS</h1>
+                        <div class="my-3">
+                            <p>
+                                CPU Scheduling is a process of determining which process will own CPU for execution
+                                while another
+                                process is on hold. The main task of CPU scheduling is to make sure that whenever the
+                                CPU remains
+                                idle, the OS at least select one of the processes available in the ready queue for
+                                execution. The
+                                selection process will be carried out by the CPU scheduler. It selects one of the
+                                processes in
+                                memory that are ready for execution.
+                            </p>
+                            <img id="image" src="https://cdn.guru99.com/images/1/122519_0449_CPUscheduli1.png"
+                                height="230px" width="400px">
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- First Come First Serve -->
+                <div [hidden]=fcfs id="Non-Preemptive-FCFS">
+
+                    <div id="yes">
+                        <h1 class="center" id="sa">First Come First Serve</h1>
+
+                        <!-- Main component for a primary marketing message or call to action -->
+                        <div class="jumbotronn">
+                            <p id="g1">First come first serve (FCFS) scheduling algorithm simply schedules the jobs
+                                according to
+                                their arrival time. The job which comes first in the ready queue will get the CPU first.
+                                The lesser
+                                the arrival time of the job, the sooner will the job get the CPU. FCFS scheduling may
+                                cause the
+                                problem of starvation if the burst time of the first process is the longest among all
+                                the jobs.</p>
+
+                            <table id="g1" class="table table-bordered jumbotronn">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Advantages</th>
+                                        <th scope="col">Disadvantages</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Simple & Easy</td>
+                                        <td>Large Average Waiting Time</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Starvation Doesnt Occurs</td>
+                                        <td>Does't Work For Priority Process</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Self Explanatory Logic</td>
+                                        <td>Not Efficient</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>
+                        </div>
+
+                        <div id="boxx">
+                            <h3 class="centerr">Visualization</h3>
+                            <div class="my-3">
+                                <form (ngSubmit)="Submit()">
+                                    <div class="mb-3">
+                                        <label for="pid" class="form-label">Proccess Id</label>
+                                        <input type="text" class="form-control" #pid (keyup)="getPid(pid.value)"
+                                            id="pid" placeholder="Proccess Id">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="atime" class="form-label">Arrival Time</label>
+                                        <input type="text" class="form-control" #atime (keyup)="getAtime(atime.value)"
+                                            id="atime" placeholder="Enter Arrival Time">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="btime" class="form-label">Burst Time</label>
+                                        <input type="text" class="form-control" #btime (keyup)="getBtime((btime.value))"
+                                            id="btime" placeholder="Enter Burst Time">
+                                    </div>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </form>
+                            </div>
+
+
+
+                            <div [hidden]=showtables>
+                                <h3>Table</h3>
+                                <div class="my-3">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Pid</th>
+                                                <th scope="col">Arrival Time</th>
+                                                <th scope="col">Burst Time</th>
+                                                <th scope="col">Completion Time</th>
+                                                <th scope="col">Turn Around Time</th>
+                                                <th scope="col">Waiting Time</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let todo of aray">
+                                                <th scope="row">{{todo.pid}}</th>
+                                                <td>{{todo.atime}}</td>
+                                                <td>{{todo.btime}}</td>
+                                                <td>{{todo.ctime}}</td>
+                                                <td>{{todo.tat}}</td>
+                                                <td>{{todo.wt}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+
+                                    <form>
+                                        <span><button type="submit" class="btn btn-success"
+                                                (click)="Compute($event)">Compute
+                                                Table</button>
+                                            <button type="submit" id="sidee" (click)="EraseData($event)"
+                                                class="btn btn-success">Erase
+                                                All</button>
+                                        </span>
+                                    </form>
+
+
+
+
+                                    <br>
+                                    <br>
+
+                                    <div [hidden]=showgaant>
+                                        <h3>Gaant Chart</h3>
+                                        <table class="table table-bordered table-striped  table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Process Id</th>
+                                                    <th scope="col">Starting Time</th>
+                                                    <th scope="col">Ending Time</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let help of Gannt">
+                                                    <td> {{help.id}}</td>
+                                                    <td>{{help.start}}</td>
+                                                    <td>{{help.end}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <br>
+
+                                        <div class=" my-3">
+                                            <span id="sp1">Average TAT : {{avgtat}}</span>
+                                            <span id="sp">Average WT :{{avgwt}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <!-- Non Preemptive Shortest Job First -->
+                <div [hidden]=npsjf id="Non-Preemptive-SJF">
+                    <div>
+                        <h1 class="center" id="sa">Non Preemptive Shortest Job First</h1>
+                        <div class="jumbotronn">
+                            <p id="g1">Shortest job first (SJF) or shortest job next, is a scheduling policy that
+                                selects the
+                                waiting process with the smallest execution time to execute next. SJN is a
+                                non-preemptive algorithm.
+                                Shortest Job first has the advantage of having a minimum average waiting time among all
+                                scheduling
+                                algorithms.</p>
+
+                            <table id="g1" class="table table-bordered jumbotronn">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Advantages</th>
+                                        <th scope="col">Disadvantages</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Optimal Turn Around Time</td>
+                                        <td>Requires knowledge of how long a process or job will run</td>
+                                    </tr>
+                                    <tr>
+                                        <td>minimum average waiting time </td>
+                                        <td>It is often used in a batch system for long term scheduling</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Suitable For Long Term Scheduling</td>
+                                        <td>Starvation May Happens</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="boxx">
+                        <h3 class="centerr">Visualization</h3>
+                        <div class="my-3">
+                            <form (ngSubmit)="SubmitNPSJF()">
+                                <div class="mb-3">
+                                    <label for="pidd" class="form-label">Proccess Id</label>
+                                    <input type="text" class="form-control" #pidd (keyup)="getPid(pidd.value)" id="pid"
+                                        placeholder="Proccess Id">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="atimee" class="form-label">Arrival Time</label>
+                                    <input type="text" class="form-control" #atimee (keyup)="getAtime(atimee.value)"
+                                        id="atime" placeholder="Enter Arrival Time">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="btimee" class="form-label">Burst Time</label>
+                                    <input type="text" class="form-control" #btimee (keyup)="getBtime((btimee.value))"
+                                        id="btime" placeholder="Enter Burst Time">
+                                </div>
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </form>
+                        </div>
+
+
+
+                        <div [hidden]=showtables>
+                            <h3>Table</h3>
+
+                            <div class="my-3">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Pid</th>
+                                            <th scope="col">Arrival Time</th>
+                                            <th scope="col">Burst Time</th>
+                                            <th scope="col">Completion Time</th>
+                                            <th scope="col">Turn Around Time</th>
+                                            <th scope="col">Waiting Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let todo of aray">
+                                            <th scope="row">{{todo.pid}}</th>
+                                            <td>{{todo.atime}}</td>
+                                            <td>{{todo.btime}}</td>
+                                            <td>{{todo.ctime}}</td>
+                                            <td>{{todo.tat}}</td>
+                                            <td>{{todo.wt}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                                <form>
+                                    <span><button type="submit" class="btn btn-success"
+                                            (click)="ComputeNPSJF($event)">Compute
+                                            Table</button>
+                                        <button type="submit" id="sidee" (click)="EraseData($event)"
+                                            class="btn btn-success">Erase
+                                            All</button>
+                                    </span>
+                                </form>
+
+
+
+
+                                <br>
+                                <br>
+
+                                <div [hidden]=showgaant>
+                                    <h3>Gaant Chart</h3>
+                                    <table class="table table-bordered table-striped  table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Process Id</th>
+                                                <th scope="col">Starting Time</th>
+                                                <th scope="col">Ending Time</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let help of Gannt">
+                                                <td> {{help.id}}</td>
+                                                <td>{{help.start}}</td>
+                                                <td>{{help.end}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <br>
+
+                                    <div class=" my-3">
+                                        <span id="sp1">Average TAT : {{avgtat}}</span>
+                                        <span id="sp">Average WT :{{avgwt}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Non Preemptive Priority Scheduling-->
+                <div [hidden]=npscheduling id="Non-Preemptive-PS">
+                    <div>
+                        <h1 class="center" id="sa">Non Preemptive Priority Scheduling</h1>
+                        <div class="jumbotronn">
+                            <p id="g1">Priority Scheduling is a method of scheduling processes that is based on
+                                priority. In this
+                                algorithm, the scheduler selects the tasks to work as per the priority.
+
+                                The processes with Lower priority should be carried out first, whereas jobs with equal
+                                priorities
+                                are carried out on a round-robin or FCFS basis. Priority depends upon memory
+                                requirements, time
+                                requirements, etc.</p>
+
+                            <table id="g1" class="table table-bordered jumbotronn">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Advantages</th>
+                                        <th scope="col">Disadvantages</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Once resources are allocated to a process, the process holds it till it
+                                            completes its
+                                            burst time even if a process with higher priority is added to the queue.
+                                        </td>
+                                        <td>Bugs can cause a machine to freeze up</td>
+                                    </tr>
+                                    <tr>
+                                        <td>It is cheaper to implement and faster as less switching is required. </td>
+                                        <td>Bugs can cause a machine to freeze up</td>
+                                    </tr>
+                                    <tr>
+                                        <td>It can be used in various hardware applications where waiting will not cause
+                                            any serious
+                                            issues.</td>
+                                        <td>It can lead to starvation especially for those real-time tasks.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="boxx">
+                        <h3 class="centerr">Visualization</h3>
+                        <div class="my-3">
+                            <form (ngSubmit)="SubmitNPS()">
+                                <div class="mb-3">
+                                    <label for="pid_nps" class="form-label">Proccess Id</label>
+                                    <input type="text" class="form-control" #pid_nps (keyup)="getPid(pid_nps.value)"
+                                        id="pid" placeholder="Proccess Id">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="priority_nps" class="form-label">Priority</label>
+                                    <input type="text" class="form-control" #priority_nps
+                                        (keyup)="getPriority(priority_nps.value)" id="pid" placeholder="Enter Priority">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="atime_nps" class="form-label">Arrival Time</label>
+                                    <input type="text" class="form-control" #atime_nps
+                                        (keyup)="getAtime(atime_nps.value)" id="atime" placeholder="Enter Arrival Time">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="btime_nps" class="form-label">Burst Time</label>
+                                    <input type="text" class="form-control" #btime_nps
+                                        (keyup)="getBtime((btime_nps.value))" id="btime" placeholder="Enter Burst Time">
+                                </div>
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </form>
+                        </div>
+
+
+
+                        <div [hidden]=showtables>
+                            <h3>Table</h3>
+
+                            <div class="my-3">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Pid</th>
+                                            <th scope="col">Proirity</th>
+                                            <th scope="col">Arrival Time</th>
+                                            <th scope="col">Burst Time</th>
+                                            <th scope="col">Completion Time</th>
+                                            <th scope="col">Turn Around Time</th>
+                                            <th scope="col">Waiting Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let todo of prty">
+                                            <th scope="row">{{todo.pid}}</th>
+                                            <td>{{todo.priority}}</td>
+                                            <td>{{todo.atime}}</td>
+                                            <td>{{todo.btime}}</td>
+                                            <td>{{todo.ctime}}</td>
+                                            <td>{{todo.tat}}</td>
+                                            <td>{{todo.wt}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                                <form>
+                                    <span><button type="submit" class="btn btn-success"
+                                            (click)="ComputeNPP($event)">Compute
+                                            Table</button>
+                                        <button type="submit" id="sidee" (click)="EraseData($event)"
+                                            class="btn btn-success">Erase
+                                            All</button>
+                                    </span>
+                                </form>
+
+
+
+
+                                <br>
+                                <br>
+
+                                <div [hidden]=showgaant>
+                                    <h3>Gaant Chart</h3>
+                                    <table class="table table-bordered table-striped  table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Process Id</th>
+                                                <th scope="col">Starting Time</th>
+                                                <th scope="col">Ending Time</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let help of Gannt">
+                                                <td> {{help.id}}</td>
+                                                <td>{{help.start}}</td>
+                                                <td>{{help.end}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <br>
+
+                                    <div class=" my-3">
+                                        <span id="sp1">Average TAT : {{avgtat}}</span>
+                                        <span id="sp">Average WT :{{avgwt}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- PREEMPTIVE SHORTEST JOB FIRST -->
+                <div [hidden]=psjf id="Preemptive-SJF">
+                    <div>
+                        <h1 class="center" id="sa">Preemptive Shortest Job First</h1>
+                        <div class="jumbotronn">
+                            <p id="g1">In Preemptive SJF Scheduling, jobs are put into the ready queue as they come. A
+                                process with
+                                shortest burst time begins execution. If a process with even a shorter burst time
+                                arrives, the
+                                current process is removed or preempted from execution, and the shorter job is allocated
+                                CPU cycle..
+                            </p>
+
+                            <table id="g1" class="table table-bordered jumbotronn">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Advantages</th>
+                                        <th scope="col">Disadvantages</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Optimal Turn Around Time</td>
+                                        <td>Requires knowledge of how long a process or job will run</td>
+                                    </tr>
+                                    <tr>
+                                        <td>minimum average waiting time </td>
+                                        <td>It is often used in a batch system for long term scheduling</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Suitable For Long Term Scheduling</td>
+                                        <td>Starvation May Happens</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="boxx">
+                        <h3 class="centerr">Visualization</h3>
+                        <div class="my-3">
+                            <form (ngSubmit)="SubmitPSJF()">
+                                <div class="mb-3">
+                                    <label for="pid_psjf" class="form-label">Proccess Id</label>
+                                    <input type="text" class="form-control" #pid_psjf (keyup)="getPid(pid_psjf.value)"
+                                        id="pid" placeholder="Proccess Id">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="atime_psjf" class="form-label">Arrival Time</label>
+                                    <input type="text" class="form-control" #atime_psjf
+                                        (keyup)="getAtime(atime_psjf.value)" id="atime"
+                                        placeholder="Enter Arrival Time">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="btime_psjf" class="form-label">Burst Time</label>
+                                    <input type="text" class="form-control" #btime_psjf
+                                        (keyup)="getBtime((btime_psjf.value))" id="btime"
+                                        placeholder="Enter Burst Time">
+                                </div>
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </form>
+                        </div>
+
+
+
+                        <div [hidden]=showtables>
+                            <h3>Table</h3>
+
+                            <div class="my-3">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Pid</th>
+                                            <th scope="col">Arrival Time</th>
+                                            <th scope="col">Burst Time</th>
+                                            <th scope="col">Completion Time</th>
+                                            <th scope="col">Turn Around Time</th>
+                                            <th scope="col">Waiting Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let todo of aray">
+                                            <th scope="row">{{todo.pid}}</th>
+                                            <td>{{todo.atime}}</td>
+                                            <td>{{todo.btime}}</td>
+                                            <td>{{todo.ctime}}</td>
+                                            <td>{{todo.tat}}</td>
+                                            <td>{{todo.wt}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                                <form>
+                                    <span><button type="submit" class="btn btn-success"
+                                            (click)="ComputePSJF($event)">Compute
+                                            Table</button>
+                                        <button type="submit" id="sidee" (click)="EraseData($event)"
+                                            class="btn btn-success">Erase
+                                            All</button>
+                                    </span>
+                                </form>
+
+
+
+
+                                <br>
+                                <br>
+
+                                <div [hidden]=showgaant>
+                                    <h3>Gaant Chart</h3>
+                                    <table class="table table-bordered table-striped  table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Process Id</th>
+                                                <th scope="col">Starting Time</th>
+                                                <th scope="col">Ending Time</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let help of Gannt">
+                                                <td> {{help.id}}</td>
+                                                <td>{{help.start}}</td>
+                                                <td>{{help.end}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <br>
+
+                                    <div class=" my-3">
+                                        <span id="sp1">Average TAT : {{avgtat}}</span>
+                                        <span id="sp">Average WT :{{avgwt}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PREEMPTIVE ROUND ROOBIN -->
+                <div [hidden]=rr id="Preemptive-round_robin">
+                    <div>
+                        <h1 class="center" id="sa">Round Robin</h1>
+                        <div class="jumbotronn">
+                            <p id="g1">Round Robin is a CPU scheduling algorithm where each process is assigned a fixed
+                                time slot in
+                                a cyclic way. It is simple, easy to implement, and starvation-free as all processes get
+                                fair share
+                                of CPU. One of the most commonly used technique in CPU scheduling as a core
+                            </p>
+
+                            <table id="g1" class="table table-bordered jumbotronn">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Advantages</th>
+                                        <th scope="col">Disadvantages</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>The relative importance of each process maybe precisely defined.</td>
+                                        <td>problem is deciding which process gets which priority level assigned to it
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Optimal Algorithms for lesser Tat And Wt </td>
+                                        <td>Starvation May Cause By Some High Priority Process</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Suitable For Long Term Scheduling & Short Scheduling.</td>
+                                        <td>If slicing time of OS is low, the processor output will be reduced</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="boxx">
+                        <h3 class="centerr">Visualization</h3>
+                        <div class="my-3">
+
+                            <form (ngSubmit)="SubmitRR()">
+                                <div class="mb-3">
+                                    <label for="pid_rr" class="form-label">Proccess Id</label>
+                                    <input type="text" class="form-control" #pid_rr (keyup)="getPid(pid_rr.value)"
+                                        id="pid" placeholder="Proccess Id">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="atime_rr" class="form-label">Arrival Time</label>
+                                    <input type="text" class="form-control" #atime_rr (keyup)="getAtime(atime_rr.value)"
+                                        id="atime" placeholder="Enter Arrival Time">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="btime_rr" class="form-label">Burst Time</label>
+                                    <input type="text" class="form-control" #btime_rr
+                                        (keyup)="getBtime((btime_rr.value))" id="btime" placeholder="Enter Burst Time">
+                                </div>
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </form>
+                        </div>
+
+
+
+                        <div [hidden]=showtables>
+
+                            <h3>Table</h3>
+
+                            <div class="my-3">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Pid</th>
+                                            <th scope="col">Arrival Time</th>
+                                            <th scope="col">Burst Time</th>
+                                            <th scope="col">Completion Time</th>
+                                            <th scope="col">Turn Around Time</th>
+                                            <th scope="col">Waiting Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let todo of aray">
+                                            <th scope="row">{{todo.pid}}</th>
+                                            <td>{{todo.atime}}</td>
+                                            <td>{{todo.btime}}</td>
+                                            <td>{{todo.ctime}}</td>
+                                            <td>{{todo.tat}}</td>
+                                            <td>{{todo.wt}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                                <form>
+                                    <span><button type="submit" class="btn btn-success"
+                                            (click)="ComputeRR($event)">Compute
+                                            Table</button>
+                                        <button type="submit" id="sidee" (click)="EraseData($event)"
+                                            class="btn btn-success">Erase
+                                            All</button>
+                                    </span>
+                                    <div class="my-3">
+                                        <input type="text" class="form-control" #tq (keyup)="getBtime((tq.value))"
+                                            id="tq" placeholder="Enter Time Quantum">
+                                    </div>
+                                </form>
+
+
+
+
+                                <br>
+                                <br>
+
+                                <div [hidden]=showgaant>
+                                    <h3>Gaant Chart</h3>
+                                    <table class="table table-bordered table-striped  table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Process Id</th>
+                                                <th scope="col">Starting Time</th>
+                                                <th scope="col">Ending Time</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let help of Gannt">
+                                                <td> {{help.id}}</td>
+                                                <td>{{help.start}}</td>
+                                                <td>{{help.end}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <br>
+
+                                    <div class=" my-3">
+                                        <span id="sp1">Average TAT : {{avgtat}}</span>
+                                        <span id="sp">Average WT :{{avgwt}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Preemptive Priority Scheduling-->
+                <div [hidden]=pscheduling id="Preemptive-PS">
+                    <div>
+                        <h1 class="center" id="sa">Preemptive Priority Scheduling</h1>
+                        <div class="jumbotronn">
+                            <p id="g1">Priority Scheduling is a method of scheduling processes that is based on
+                                priority. In this
+                                algorithm, the scheduler selects the tasks to work as per the priority.
+
+                                The processes with Lower priority should be carried out first, whereas jobs with equal
+                                priorities
+                                are carried out on a round-robin or FCFS basis. Priority depends upon memory
+                                requirements, time
+                                requirements, etc.</p>
+
+                            <table id="g1" class="table table-bordered jumbotronn">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Advantages</th>
+                                        <th scope="col">Disadvantages</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Once resources are allocated to a process, the process holds it till it
+                                            completes its
+                                            burst time even if a process with higher priority is added to the queue.
+                                        </td>
+                                        <td>Bugs can cause a machine to freeze up</td>
+                                    </tr>
+                                    <tr>
+                                        <td>It is cheaper to implement and faster as less switching is required. </td>
+                                        <td>Bugs can cause a machine to freeze up</td>
+                                    </tr>
+                                    <tr>
+                                        <td>It can be used in various hardware applications where waiting will not cause
+                                            any serious
+                                            issues.</td>
+                                        <td>It can lead to starvation especially for those real-time tasks.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="boxx">
+                        <h3 class="centerr">Visualization</h3>
+                        <div class="my-3">
+                            <form (ngSubmit)="SubmitPS()">
+                                <div class="mb-3">
+                                    <label for="pid_ps" class="form-label">Proccess Id</label>
+                                    <input type="text" class="form-control" #pid_ps (keyup)="getPid(pid_ps.value)"
+                                        id="pid" placeholder="Proccess Id">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="priority_ps" class="form-label">Priority</label>
+                                    <input type="text" class="form-control" #priority_ps
+                                        (keyup)="getPriority(priority_ps.value)" id="pid" placeholder="Enter Priority">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="atime_ps" class="form-label">Arrival Time</label>
+                                    <input type="text" class="form-control" #atime_ps (keyup)="getAtime(atime_ps.value)"
+                                        id="atime" placeholder="Enter Arrival Time">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="btime_ps" class="form-label">Burst Time</label>
+                                    <input type="text" class="form-control" #btime_ps
+                                        (keyup)="getBtime((btime_ps.value))" id="btime" placeholder="Enter Burst Time">
+                                </div>
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </form>
+                        </div>
+
+
+
+                        <div [hidden]=showtables>
+                            <h3>Table</h3>
+
+                            <div class="my-3">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Pid</th>
+                                            <th scope="col">Proirity</th>
+                                            <th scope="col">Arrival Time</th>
+                                            <th scope="col">Burst Time</th>
+                                            <th scope="col">Completion Time</th>
+                                            <th scope="col">Turn Around Time</th>
+                                            <th scope="col">Waiting Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let todo of prty">
+                                            <th scope="row">{{todo.pid}}</th>
+                                            <td>{{todo.priority}}</td>
+                                            <td>{{todo.atime}}</td>
+                                            <td>{{todo.btime}}</td>
+                                            <td>{{todo.ctime}}</td>
+                                            <td>{{todo.tat}}</td>
+                                            <td>{{todo.wt}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                                <form>
+                                    <span><button type="submit" class="btn btn-success"
+                                            (click)="ComputeNP($event)">Compute
+                                            Table</button>
+                                        <button type="submit" id="sidee" (click)="EraseData($event)"
+                                            class="btn btn-success">Erase
+                                            All</button>
+                                    </span>
+                                </form>
+
+
+
+
+                                <br>
+                                <br>
+
+                                <div [hidden]=showgaant>
+                                    <h3>Gaant Chart</h3>
+                                    <table class="table table-bordered table-striped  table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Process Id</th>
+                                                <th scope="col">Starting Time</th>
+                                                <th scope="col">Ending Time</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let help of Gannt">
+                                                <td> {{help.id}}</td>
+                                                <td>{{help.start}}</td>
+                                                <td>{{help.end}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <br>
+
+                                    <div class=" my-3">
+                                        <span id="sp1">Average TAT : {{avgtat}}</span>
+                                        <span id="sp">Average WT :{{avgwt}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,87 @@
+<div class="back">
+  <div class="continer-fluid">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="container my-3">
+          <div class="card signup_v4 mb-30">
+            <div class="card-body">
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation"> <a class="nav-link active" id="login-tab" data-toggle="tab"
+                    href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a> </li>
+                <li class="nav-item" role="presentation"> <a class="nav-link" id="register-tab" data-toggle="tab"
+                    href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a> </li>
+              </ul>
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                  <h4 class="text-center mt-4 mb-4" style="text-transform: uppercase;"></h4>
+                  <form [formGroup]="loginForm">
+                    <div class="form-row">
+                      <div class="form-group col-md-12"> <label for="inputName">Your Username</label> <input
+                          formControlName="email" type="text" class="form-control" id="inputEmail4"
+                          placeholder="Enter your username" required=""> </div>
+                      <div class="form-group col-md-12"> <label for="inputName">Your Password</label> <input
+                          formControlName="password" type="password" class="form-control" id="inputPassword4"
+                          placeholder="Enter your password" required=""> </div>
+                      <div class="form-group col-md-12">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center">
+                          <div class="custom-checkbox d-block"> <label
+                              class="custom-control custom-checkbox checkbox-lg"> <input type="checkbox"
+                                class="custom-control-input" id="customCheck1">
+                              <div class="custom-control-label" for="customCheck1">Remember Password</div>
+                            </label> </div> <a href="#" target="_blank">Forgot Password?</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mt-2 mb-3"> <button class="btn btn-primary full-width" (click)="login()"
+                        type="submit">Login</button> </div>
+                  </form>
+                </div>
+                <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+
+                  <!-- <div class="col-sm-12" style="text-align:center;">
+              Register
+            </div> -->
+
+                  <div class="col-sm-12">
+                    <h4 class="text-center mt-4 mb-4" style="text-transform: uppercase;"></h4>
+                    <form [formGroup]="registerForm">
+                      <div class="form-group ">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1"
+                          aria-describedby="emailHelp" placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                      </div>
+                      <div class="form-group ">
+                        <label for="exampleInputUsername">Username</label>
+                        <input formControlName="username" type="text" class="form-control" id="exampleInputUsername"
+                          aria-describedby="userHelp" placeholder="username">
+                        <small id="userHelp" class="form-text text-muted"></small>
+                      </div>
+                      <div class="form-group">
+                        <label for="passwordInput">Password</label>
+                        <input formControlName="password" type="password" class="form-control" id="passwordInput"
+                          aria-describedby="passHelp" placeholder="password">
+                        <small id="passHelp" class="form-text text-muted"></small>
+                      </div>
+                      <div class="form-group">
+                        <label for="CpasswordInput">Confirm Password</label>
+                        <input formControlName="cpass" type="password" class="form-control" id="CpasswordInput"
+                          aria-describedby="CpassHelp" placeholder="password">
+                        <small id="CpassHelp" class="form-text text-muted"></small>
+                      </div>
+                      <div class="my-3">
+                        <button type="button" class="btn btn-primary full-width" (click)="register()">Register</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
