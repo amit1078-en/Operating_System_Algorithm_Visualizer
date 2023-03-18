@@ -68,9 +68,9 @@ router.delete('/delete',isValidUser,function(req,res,next){
     });
   });
 })
-async function isValidUser(req,res,next){
+ function isValidUser(req,res,next){
   console.log('this is ',req);
-  const response = await req.isAuthenticated();
+  const response =  req.isAuthenticated();
   if(response)
   {
     next();
