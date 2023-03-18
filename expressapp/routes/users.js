@@ -30,9 +30,9 @@ async function addToDB(req, res) {
 }
 
 
-router.post('/login', async function(req,res,next){
+router.post('/login',  function(req,res,next){
    console.log(req.body);
-   await passport.authenticate('local', function(err, user, info) {
+    passport.authenticate('local', function(err, user, info) {
     console.log('error',err);
     console.log('user',user);
     console.log('info',info);
