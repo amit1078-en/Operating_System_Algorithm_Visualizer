@@ -3,7 +3,7 @@ var router = express.Router();
 var User = require('../models/user');
 var passport = require('passport');
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
+var url = `mongodb+srv://Amit279:Amit@1234a1@algorithmvisualizer.0obtuq8.mongodb.net/?retryWrites=true&w=majority`;
 
 router.post('/register', function (req, res, next) {
   addToDB(req, res);
@@ -30,9 +30,12 @@ async function addToDB(req, res) {
 }
 
 
-router.post('/login',function(req,res,next){
-  
-  passport.authenticate('local', function(err, user, info) {
+router.post('/login', async function(req,res,next){
+   console.log(req.body);
+   await passport.authenticate('local', function(err, user, info) {
+    console.log('error',err);
+    console.log('user',user);
+    console.log('info',info);
     if (err) { return res.status(501).json(err); }
     if (!user) { return res.status(501).json(info); }
     req.logIn(user, function(err) {

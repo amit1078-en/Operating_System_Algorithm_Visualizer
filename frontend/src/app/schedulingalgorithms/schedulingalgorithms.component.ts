@@ -37,6 +37,7 @@ export class SchedulingalgorithmsComponent implements OnInit {
 
   showtables = true;
   showgaant = true;
+
   title = 'prac';
   // @Input() aray
   // @Input() gannt
@@ -116,6 +117,8 @@ export class SchedulingalgorithmsComponent implements OnInit {
 
     event.preventDefault();
   }
+
+
   switch() {
     this.fcfs = true;
     this.psjf = true;
@@ -124,6 +127,7 @@ export class SchedulingalgorithmsComponent implements OnInit {
     this.npscheduling = true;
     this.rr = true;
   }
+
   showfcfs(event: any) {
     this.EraseData(event);
     this.switch();
@@ -194,9 +198,11 @@ export class SchedulingalgorithmsComponent implements OnInit {
     }
   }
 
-  Compute(event: any) {
+  Compute(event: any) 
+  {
     event.preventDefault();
     //Validations
+
     // 1.first the table should not be empty 
     let sz = this.Gannt.length;
     while (sz--) {
@@ -285,14 +291,16 @@ export class SchedulingalgorithmsComponent implements OnInit {
 
 
 
-  shownpsjf(event: any) {
+  shownpsjf(event: any) 
+  {
     event.preventDefault();
     this.EraseData(event);
     this.switch();
     this.npsjf = false;
   }
 
-  SubmitNPSJF() {
+  SubmitNPSJF() 
+  {
     if (this.pid < 0) {
 
       alert("Process Id Must Be Proper" + this.pid);
@@ -328,7 +336,7 @@ export class SchedulingalgorithmsComponent implements OnInit {
   }
 
   ComputeNPSJF(event: any) {
-
+  
     let size = this.aray.length;
     let visited: boolean[] = new Array();
     let index: Number[] = new Array();

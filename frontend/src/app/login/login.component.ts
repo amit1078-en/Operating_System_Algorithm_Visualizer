@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     // alert(JSON.stringify(this.loginForm.value));
     this._user.login(JSON.stringify(this.loginForm.value))
     .subscribe(
-      data=>{console.log(data);this._router.navigate(['/SchedulingAlgorithm'])},
+      (      data): void=>{console.log(data);this._router.navigate(['/SchedulingAlgorithm'])},
       error=>alert("Either Username/Password Is Incorrect")
     )
   }

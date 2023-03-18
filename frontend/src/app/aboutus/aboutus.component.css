@@ -178,7 +178,7 @@ html {
 
 .column {
   float: left;
-  width: 33.3%;
+  width: 50%;
   margin-bottom: 16px;
   padding: 0 8px;
 }
@@ -279,7 +279,7 @@ body{
 .contact-image{
   text-align: center;
 }
-.contact-image img{
+.contact-image {
   border-radius: 6rem;
   width: 11%;
   margin-top: -3%;
@@ -287,6 +287,9 @@ body{
 }
 .contact-form form{
   padding: 14%;
+}
+#row{
+  grid-template-columns: repeat(2,1fr)
 }
 .contact-form form .row{
   margin-bottom: -7%;
@@ -329,4 +332,48 @@ body{
 }
 #btnn{
   border-radius: 10px;
+}
+.About-Section
+{
+  display: grid;
+  padding: 1rem;
+  grid-template-columns: 3.5fr 6.5fr;
+  width: 100%;
+  border: 2px solid black;
+  border-radius: 1.5rem;
+  height: 24rem;
+  box-shadow: 0 0 14px #999;
+  margin-top: 3rem;
+}
+img{
+  border-radius: 1.1rem;
+}
+.Img-Section
+{
+  /* border: 1px solid black; */
+  border-radius: 1.1rem;
+  height: 20rem;
+}
+.Info-Section{
+  /* border: 1px solid black; */
+  border-radius: 1.1rem;
+  height: 20rem;
+}
+.Info-Section-div
+{
+  /* padding-left: 2rem; */
+}
+.Info-Section-div h2{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Content-data
+{
+  height: 100%;
+  padding-top: 4rem;
+  display: flex;
+  align-items: end;
+  justify-content: center;
 }

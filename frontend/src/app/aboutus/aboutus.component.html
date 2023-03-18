@@ -1,3 +1,4 @@
+
 <div class="continer-fluid">
   <div class="row">
     <div class="col-md-6 offset-md-3">
@@ -13,7 +14,7 @@
           </li>
           <li>
             <a href="#npsjf" (click)="aboutus($event)">
-              <i class="fa fa-tachometer" aria-hidden="true "></i> Team Members
+              <i class="fa fa-tachometer" aria-hidden="true "></i> About Developer
             </a>
           </li>
         </ul>
@@ -23,14 +24,14 @@
 
         <div [hidden]="showaboutus" class="container-fluid">
 
-          <div class="about-section">
+          <!-- <div class="about-section">
             <h1 class="center">About Us</h1>
             <p>Take A Look At Our Team</p>
             <p>Developers Behind this Project</p>
           </div>
 
-          <h2 style="text-align:center">Our Team</h2>
-          <div class="row">
+          <h2 style="text-align:center">Our Team</h2> -->
+          <!-- <div id="row">
             <div class="column">
               <div class="card">
                 <img
@@ -38,9 +39,10 @@
                   alt="Jane" style="width:100%; height:350px">
                 <div class="container">
                   <h2>Amit Kumar</h2>
-                  <p class="title">Frontend,Design</p>
+                  <p class="title">Frontend,Backend,Design</p>
                   <p>Implementation in angular 12</p>
-                  <p>using bootstrap</p>
+                  <p>Implemented Backend , Creating Api's </p>
+                  <p>Setting Up Express Server</p>
                   <p>agkumar@mitaoe.ac.in</p>
                   <p><button class="button">Contact</button></p>
                 </div>
@@ -54,7 +56,7 @@
                   alt="Mike" style="width:100%; height:350px">
                 <div class="container">
                   <h2>Keshav Dubey</h2>
-                  <p class="title">Backend & Api's</p>
+                  <p class="title">DataBase & Api's</p>
                   <p>Implementation in nodejs</p>
                   <p>And Express</p>
                   <p>kkdubey@mitaoe.ac.in</p>
@@ -63,23 +65,29 @@
               </div>
             </div>
 
-            <div class="column">
-              <div class="card">
-                <img
-                  src="https://mail.google.com/mail/u/0?ui=2&ik=735b821989&attid=0.1&permmsgid=msg-f:1715680538238331420&th=17cf525c05bf2a1c&view=att&disp=safe&realattid=f_kvnri2bl0"
-                  alt="John" style="width:100%; height:350px">
-                <div class="container">
-                  <h2>Mansi Singh</h2>
-                  <p class="title">Database & Testing</p>
-                  <p>Implementation in Mongodb</p>
-                  <p>Testing in Zest</p>
-                  <p>mnsingh@mitaoe.ac.in</p>
-                  <p><button class="button">Contact</button></p>
-                </div>
+            
+          </div> -->
+          <div class="About-Section">
+            <div class="Img-Section">
+              <img
+                  src="https://mail.google.com/mail/u/0?ui=2&ik=735b821989&attid=0.1&permmsgid=msg-a:r-8200600068592396188&th=186f49a37793c122&view=fimg&fur=ip&sz=s0-l75-ft&attbid=ANGjdJ-pZ6o1r5HjdfA-BCp_x8XnNDVeBTz3HWehV62a9344jAzJr54G7zgpqODrFUeVQmDV6WiKSgroANxEasW3Xr3vOAaBRqmENkzEDeII6U_2jj-TMcluW99AHR4&disp=emb&realattid=ii_lfdx6tfy0"
+                  alt="Jane" style="width:100%; height:350px">
+            </div>
+            <div class="Info-Section">
+              <div class="Info-Section-div">
+                  <h2><a href="https://portfollio.live/agkumar" target="_blank">PortFolio</a></h2>
+                  <div class="Content-data">
+                    <ul>
+                      
+                      <li><h4>Designed Frontend in Angular</h4></li>
+                      <li><h4>Designed Backend in NodeJs</h4></li>
+                      <li><h4>Designed DataBase Schema in MongoDb</h4></li>
+                      <li><h4>Frontend Design Prepared using Figma</h4></li>
+                    </ul>
+                  </div>
               </div>
             </div>
           </div>
-
         </div>
 
         <div class="contactform" [hidden]="showcontactus">
@@ -147,11 +155,5 @@
             </div>
           </div>
         </div>
-
-
-
-
-
-      </div>
-
-    </div>
+  </div>
+</div>
