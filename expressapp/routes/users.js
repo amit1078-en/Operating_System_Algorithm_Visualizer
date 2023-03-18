@@ -68,8 +68,13 @@ router.delete('/delete',isValidUser,function(req,res,next){
     });
   });
 })
-function isValidUser(req,res,next){
-  if(req.isAuthenticated()) next();
+async function isValidUser(req,res,next){
+  console.log(req.body);
+  const response = await req.isAuthenticated();
+  if(response)
+  {
+    next();
+  }
   else return res.status(401).json({message:'Unauthorized Request'});
 }
 
